@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+            <title>Find your way in Plasma Mobile</title>
+            <link rel="stylesheet" type="text/css" href="media/css/style.css" title="Default" />
+            <link rel="alternate stylesheet" type="text/css" href="media/css/plain.css" title="Bird's Eye View" />
+    </head>
+        <body>
+        <header class="section masthead" id="masthead">
+            <div id="logo">
+                <span class="plamo-logo"><img src="media/img/plamo-logo.svg" /></span>
+            </div>
+             <div id="lang" hidden>
+                <span id="lang-selection">Language:</span>
+                <select>
+                    <option value='en' selected>English</option>
+                    <option value='es'>Español | Spanish</option>
+                </select>
+            </div>
+        </header>
+        
+        <div id="wrapper">
+         
+            <div id="responses">
+                <div id="ok"><a href="javascript:">Tell me more</a></div>
+                <div id="next">
+                    <a href="javascript:">
+                        <span class="negative">No, not interested</span>
+                        <span class="negative">Show me something else</span>
+                        <span class="negative">Any other task?</span>
+                        <span class="negative">Not sure, something else please?</span>
+                        <span class="negative">Not my line of expertise</span>
+                        <span class="negative">Next please</span>
+                    </a>
+                </div>
+                <div id="back"><a href="javascript:">I was wrong, take me back</a></div>
+                
+                <noscript>
+                    <span>Please enable JavaScript in your browser!</span>
+                </noscript>
+                
+            </div>
+            
+            <div id="footer">Based on <a href="https://github.com/jdm/asknot">asknot</a></div>
+        </div>
+        <script src="media/js/jquery-1.11.2.min.js"></script>
+        <script src="media/js/foopy.js"></script>
+        <script src="media/js/l10n.js"></script>
+        <script src="media/js/displayRender.js"></script>
+        <script src="media/js/handlebars-v4.0.11.js"></script>
+        <script>
+            $(document).ready(function() {
+            DisplayRender.addHelpers();
+            DisplayRender.renderTemplate();
+            $('#responses div').show();
+            });
+        </script>
+
+        <script id="group-template" type="text/x-handlebars-template">
+            {{#each groups}}
+            <div class="group" {{group_info}}
+                    <ul class="choices">
+                        {{#each choices}}
+                        <li {{choice_info}}</li>
+                        {{/each}}
+                    </ul>
+            </div>
+            {{/each}}
+        </script>
+    </body>
+</html>
